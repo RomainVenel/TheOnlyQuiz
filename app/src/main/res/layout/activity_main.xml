@@ -5,6 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/root_layout"
+    android:background="@drawable/android_gradient_list"
     tools:context="com.molto.android.topquiz.Controller.MainActivity"
     android:orientation="vertical">
 
@@ -41,6 +43,8 @@
         android:layout_marginRight="80dp"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
+        android:layout_marginBottom="20dp"
+        android:theme="@style/MyButton"
         android:text="Meilleurs Scores"/>
 
     <Button
@@ -50,6 +54,7 @@
         android:layout_marginRight="80dp"
         android:layout_gravity="center"
         android:gravity="center"
+        android:background="@android:color/holo_orange_dark"
         android:text="A propos"/>
 
 </LinearLayout>
