@@ -3,6 +3,8 @@ package com.molto.android.topquiz.Controller;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText mNameInput;
     private Button mPlayButton;
     private User mUser;
+    private MediaPlayer player;
 
     private static final int GAME_ACTIVITY_REQUEST_CODE = 42;
 
@@ -43,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        player= MediaPlayer.create(MainActivity.this,R.raw.accueil);
+
+        player.start();
 
         LinearLayout constraintLayout = (LinearLayout) findViewById(R.id.root_layout);
 
