@@ -18,6 +18,7 @@
         </activity>
         <activity android:name=".Controller.MainActivity"></activity>
         <activity android:name=".Controller.GameActivity"></activity>
+        <activity android:name=".Controller.ScoreActivity"></activity>
     </application>
 
 </manifest>

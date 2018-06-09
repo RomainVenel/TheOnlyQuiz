@@ -2,8 +2,10 @@ package com.molto.android.topquiz.Controller;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
 import com.molto.android.topquiz.R;
 
@@ -24,6 +26,12 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        TextView tx = (TextView)findViewById(R.id.activity_home_first_txt);
+
+        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/home.TTF");
+
+        tx.setTypeface(custom_font);
+
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
@@ -32,6 +40,6 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        }, 2000);
+        }, 5000);
     }
 }

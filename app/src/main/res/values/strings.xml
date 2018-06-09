@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TheOnlyQuiz</string>
+    <string name="app_home_copyright">© Romain Venel 2018</string>
+    <string name="app_main">Ecrivez votre nom</string>
+    <string name="app_main_question">Bienvenue dans The Only Quiz</string>
+    <string name="app_main_play">Play Button</string>
+    <string name="app_main_best_score">Meilleurs Scores</string>
+    <string name="app_main_on_purpose">A propos</string>
 </resources>

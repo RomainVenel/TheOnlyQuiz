@@ -3,6 +3,7 @@ package com.molto.android.topquiz.Controller;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -38,8 +39,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-
-        String firstname = getPreferences(MODE_PRIVATE).getString("firstname", null);
 
         mEnableTouchEvents = true;
 
@@ -126,7 +125,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         if (responseIndex == mCurrentQuestion.getAnswerIndex()) {
             Toast.makeText(GameActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
-            mScore = mScore + 1;
+            mScore++;
         }else{
             Toast.makeText(GameActivity.this, "False!", Toast.LENGTH_SHORT).show();
         }
@@ -138,6 +137,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             public void run() {
                 mEnableTouchEvents = true;
                 if (--mNbQuestions == 0){
+
+                    compareScore(mScore);
+
                     AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
 
                     builder.setTitle("Well done!")
@@ -170,4 +172,20 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         return mEnableTouchEvents && super.dispatchTouchEvent(ev);
 
     }
+
+    private void compareScore(int lastScore) {
+
+        final SharedPreferences prefs = getSharedPreferences("data", MODE_PRIVATE);
+        final SharedPreferences.Editor editor = prefs.edit();
+
+        Integer bestScore = prefs.getInt("bestscore", 0);
+
+        if (lastScore > bestScore) {
+
+            editor.putInt("bestscore", lastScore);
+            editor.apply();
+        }
+
+    }
+
 }
